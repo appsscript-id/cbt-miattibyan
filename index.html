@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <?!= include('style'); ?>
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+  <main id="app">
+    <section id="loginView" class="login-wrap">
+      <div class="login-brand">
+        <div class="brand-mark">CBT</div>
+        <p class="eyebrow">COMPUTER BASED TEST</p>
+        <h1>CBT TKA SD</h1>
+        <p class="muted">Platform latihan dan simulasi Tes Kemampuan Akademik Sekolah Dasar.</p>
+      </div>
+      <form id="loginForm" class="panel login-card">
+        <h2>Selamat datang</h2>
+        <p class="muted">Masuk menggunakan akun yang diberikan sekolah.</p>
+        <label>Masuk sebagai</label>
+        <select id="loginRole"><option value="siswa">Siswa</option><option value="admin">Administrator</option></select>
+        <label>Username</label><input id="username" autocomplete="username" required placeholder="Masukkan username">
+        <label>Password</label><input id="password" type="password" autocomplete="current-password" required placeholder="Masukkan password">
+        <button class="btn primary full" type="submit">Masuk ke aplikasi</button>
+        <p class="tiny muted center">Jika mengalami kendala, hubungi administrator sekolah.</p>
+      </form>
+    </section>
+
+    <section id="adminView" class="hidden">
+      <aside class="sidebar">
+        <div class="side-brand"><div class="brand-mark small">CBT</div><div><b>CBT TKA SD</b><small>Panel Sekolah</small></div></div>
+        <div class="side-user"><div class="avatar" id="adminAvatar">A</div><div><b id="adminName">Administrator</b><small>Administrator</small></div></div>
+        <nav id="adminNav">
+          <button class="nav-item active" data-page="dashboard">▦ <span>Dashboard</span></button>
+          <button class="nav-item" data-page="students">♙ <span>Data Siswa</span></button>
+          <button class="nav-item" data-page="classes">▤ <span>Data Kelas</span></button>
+          <button class="nav-item" data-page="questions">✎ <span>Bank Soal</span></button>
+          <button class="nav-item" data-page="packages">▣ <span>Paket Ujian</span></button>
+          <button class="nav-item" data-page="schedules">◷ <span>Jadwal Ujian</span></button>
+          <button class="nav-item" data-page="results">▥ <span>Hasil Ujian</span></button>
+        </nav>
+        <button id="adminLogout" class="logout">↪ Keluar</button>
+      </aside>
+      <div class="main-area">
+        <header class="topbar"><div><span class="eyebrow">ADMINISTRATOR</span><h2 id="pageTitle">Dashboard</h2></div><div class="top-right"><span class="status-dot"></span> Sistem aktif</div></header>
+        <div id="adminContent" class="content"></div>
+      </div>
+    </section>
+
+    <section id="studentView" class="hidden">
+      <header class="student-top"><div class="side-brand"><div class="brand-mark small">CBT</div><b>CBT TKA SD</b></div><div class="student-user"><span id="studentName"></span><button id="studentLogout" class="btn light small-btn">Keluar</button></div></header>
+      <div id="studentContent" class="student-content"></div>
+    </section>
+
+    <section id="examView" class="hidden">
+      <header class="exam-header"><div><b>CBT TKA SD</b><small id="examSubject">Ujian berlangsung</small></div><div class="timer" id="timer">00:00</div></header>
+      <div class="exam-layout">
+        <article class="panel question-panel">
+          <div class="question-meta"><span id="questionCount">Soal 1</span><span id="saveState" class="save-state">Jawaban tersimpan</span></div>
+          <div id="questionText" class="question-text"></div><img id="questionImage" class="question-image hidden">
+          <div id="options" class="options"></div>
+          <div class="question-actions"><button id="markBtn" class="btn light">☆ Tandai ragu-ragu</button><div><button id="prevBtn" class="btn light">Sebelumnya</button> <button id="nextBtn" class="btn primary">Berikutnya</button></div></div>
+        </article>
+        <aside class="panel question-nav"><h3>Navigasi soal</h3><div id="numberGrid" class="number-grid"></div><div class="legend"><span><i class="legend-dot answered"></i> Terjawab</span><span><i class="legend-dot marked"></i> Ragu-ragu</span><span><i class="legend-dot"></i> Kosong</span></div><button id="submitExam" class="btn danger full">Selesaikan ujian</button></aside>
+      </div>
+    </section>
+  </main>
+  <?!= include('app'); ?>
+</body>
+</html>
